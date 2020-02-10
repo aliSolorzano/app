@@ -6,7 +6,7 @@ import smtplib
 from tkinter import *
 import tkinter as tk
 from tkinter import messagebox
-
+import threading
 
 def mensaje():
     msg = MIMEMultipart()
@@ -39,7 +39,7 @@ def mensaje():
 
     messagebox.showinfo(message="Se ha enviado correctamente el mensaje a el correo: " + str(msg['To']), title="Título")
 
-
+hilo = threading.Thread(target=mensaje)
 
 root = Tk()
 root.title("Enviador")
@@ -75,7 +75,7 @@ elcontenido = tk.StringVar()
 msj = Entry(root,textvariable=elcontenido,width=50).grid(column=2,row=5)
 
 
-btn = Button(root,text="Enviar",command=mensaje)
+btn = Button(root,text="Enviar",command=lambda:hilo.start())
 btn.grid(column=2,row=6)
 
 root.mainloop()
