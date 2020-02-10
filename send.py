@@ -52,11 +52,10 @@ lblDe = Label(root,text="De:",bg="white",pady=10,font=disenoText).grid(column=1,
 micorreo = tk.StringVar()
 deCorreo = Entry(root,textvariable=micorreo,width=50).grid(column=2,row=1,)
 
-
+#Aqui va la contraseña
 lblContra = Label(root,text="Contraseña:",bg="white",pady=10,font=disenoText).grid(column=1,row=2,sticky=E)
 suContra = tk.StringVar()
-Contra = Entry(root,textvariable=suContra,width=50).grid(column=2,row=2)
-
+Contra = Entry(root,textvariable=suContra,show="*",width=50).grid(column=2,row=2)
 
 
 #Aqui esta el texto y la entrada del correo de para quien es
