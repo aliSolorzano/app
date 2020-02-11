@@ -12,7 +12,7 @@ def mensaje():
     msg = MIMEMultipart()
 
     content = msj.get("1.0", END)
-    entry_content.set(content)
+
     message = content
 
     # setup the parametegridrs of the message
@@ -40,7 +40,9 @@ def mensaje():
 
     messagebox.showinfo(message="Se ha enviado correctamente el mensaje a el correo: " + str(msg['To']), title="Título")
 
-
+def limpiar():
+    c = deCorreo.get()
+    c.delete(first=0,last=50)
 
 master = tk.Tk()
 master.config(bg="white")
@@ -83,5 +85,7 @@ msj.grid(column=0,row=8)
 btn = tk.Button(master,bg="white",text="Enviar",command=mensaje)
 btn.grid(column=0,row=9)
 
+#btn = tk.Button(master,bg="white",text="limpiar",command=limpiar)
+#btn.grid(column=1,row=9)
 
 master.mainloop()
