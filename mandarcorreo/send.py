@@ -41,53 +41,47 @@ def mensaje():
     messagebox.showinfo(message="Se ha enviado correctamente el mensaje a el correo: " + str(msg['To']), title="Título")
 
 
-def gettext():
-
-    content = msj.get("1.0", END)
-
-    messagebox.showinfo(message=content, title="Título")
-    print(msj.get(1.0, "end"))
 
 master = tk.Tk()
 master.config(bg="white")
 master.title("Enviador")
+master.resizable(0,0)
 
 disenoText = ('arial',10,"bold")
 
 #Aqui esta el text y la entrada del correo de quien lo manda
-lblDe = tk.Label(master,text="De:",bg="white",pady=10,font=disenoText).grid(column=1,row=1,sticky=E)
+lblDe = tk.Label(master,text="De:",bg="white",font=disenoText).grid(column=0,row=0,sticky=W)
 micorreo = tk.StringVar()
-deCorreo = tk.Entry(master,textvariable=micorreo,width=50).grid(column=2,row=1,)
+deCorreo = tk.Entry(master,textvariable=micorreo,width=50,bd=1)
+deCorreo.grid(column=0,row=1)
 
 
 #Aqui va la contraseña
-lblContra = tk.Label(master,text="Contraseña:",bg="white",pady=10,font=disenoText).grid(column=1,row=2,sticky=E)
+lblContra = tk.Label(master,text="Contraseña:",bg="white",font=disenoText).grid(column=0,row=2,sticky=W)
 suContra = tk.StringVar()
-Contra = tk.Entry(master,textvariable=suContra,show="*",width=50).grid(column=2,row=2)
+Contra = tk.Entry(master,textvariable=suContra,show="*",width=50,bd=1).grid(column=0,row=3)
 
 
 #Aqui esta el texto y la entrada del correo de para quien es
-lblPara = tk.Label(master,text="Para:",bg="white",pady=10,font=disenoText).grid(column=1,row=3,sticky=E)
+
+lblPara = tk.Label(master,text="Para:",bg="white",font=disenoText).grid(column=0,row=4,sticky=W)
 sucorreo = tk.StringVar()
-deCorreo = tk.Entry(master,textvariable=sucorreo,width=50).grid(column=2,row=3)
+deCorreo = tk.Entry(master,textvariable=sucorreo,width=50,bd=1).grid(column=0,row=5)
 
 
 #aqui va el asunto
-asunto = tk.Label(master,bg="white",text="Asunto",pady=10,font=disenoText).grid(column=1,row=4,sticky=E)
+asunto = tk.Label(master,bg="white",text="Asunto:",font=disenoText).grid(column=0,row=6,sticky=W)
 elasunto = tk.StringVar()
-Asunto = tk.Entry(master,textvariable=elasunto,width=50).grid(column=2,row=4)
+Asunto = tk.Entry(master,textvariable=elasunto,width=50,bd=1).grid(column=0,row=7,pady=5)
 
 #Aqui va el contenido de el correo
-contenido = tk.Label(master,bg="white",text="Contenido",pady=20,font=disenoText).grid(column=1,row=5,sticky=E)
-msj = tk.Text(master,width=80,height=20,wrap=WORD)
-msj.grid(column=2,row=5)
-
-entry_content = tk.StringVar()
-entry = tk.Entry(master, textvariable=entry_content)
+msj = tk.Text(master,width=50,height=20,wrap=WORD,bd=1)
+msj.grid(column=0,row=8)
 
 
 #boton para enviar el correo
 btn = tk.Button(master,bg="white",text="Enviar",command=mensaje)
-btn.grid(column=2,row=6)
+btn.grid(column=0,row=9)
+
 
 master.mainloop()
