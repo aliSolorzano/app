@@ -1,18 +1,19 @@
 # import necessary packages
 
+import tkinter as tk
+from tkinter import *
+from tkinter import messagebox
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import smtplib
-from tkinter import *
-import tkinter as tk
-from tkinter import messagebox
-import threading
+
 
 def mensaje():
     msg = MIMEMultipart()
 
-
-    message = elcontenido.get()
+    content = msj.get(1.0, "end-1c")
+    entry_content.set(content)
+    message = entry_content.get()
 
     # setup the parametegridrs of the message
     password = suContra.get()
@@ -39,9 +40,12 @@ def mensaje():
 
     messagebox.showinfo(message="Se ha enviado correctamente el mensaje a el correo: " + str(msg['To']), title="Título")
 
-hilo = threading.Thread(target=mensaje)
 
-root = Tk()
+def get_text():
+
+    print(msj.get())
+
+root = tk.Tk()
 root.title("Enviador")
 root.config(bg="white")
 
@@ -51,6 +55,7 @@ disenoText = ('arial',10,"bold")
 lblDe = Label(root,text="De:",bg="white",pady=10,font=disenoText).grid(column=1,row=1,sticky=E)
 micorreo = tk.StringVar()
 deCorreo = Entry(root,textvariable=micorreo,width=50).grid(column=2,row=1,)
+
 
 #Aqui va la contraseña
 lblContra = Label(root,text="Contraseña:",bg="white",pady=10,font=disenoText).grid(column=1,row=2,sticky=E)
@@ -71,11 +76,14 @@ Asunto = Entry(root,textvariable=elasunto,width=50).grid(column=2,row=4)
 
 #Aqui va el contenido de el correo
 contenido = Label(root,bg="white",text="Contenido",pady=20,font=disenoText).grid(column=1,row=5,sticky=E)
-elcontenido = tk.StringVar()
-msj = Entry(root,textvariable=elcontenido,width=50).grid(column=2,row=5,sticky=S+N)
+msj = tk.Text(root,width=80,height=20,wrap=WORD).grid(column=2,row=5)
+
+entry_content = tk.StringVar()
+entry = tk.Entry(root, textvariable=entry_content)
+
 
 #boton para enviar el correo
-btn = Button(root,text="Enviar",command=lambda:hilo.start())
+btn = Button(root,bg="white",text="Enviar",command=get_text)
 btn.grid(column=2,row=6)
 
 root.mainloop()
