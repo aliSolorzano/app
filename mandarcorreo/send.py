@@ -41,7 +41,7 @@ def mensaje():
     messagebox.showinfo(message="Se ha enviado correctamente el mensaje a el correo: " + str(msg['To']), title="Título")
 
 def limpiar():
-    print("hola")
+    print(miCorreo.get())
 
 
 
